@@ -1,18 +1,24 @@
-import React, {FC} from 'react';
+import React, { FC, useState } from "react";
 import Title from "../ui/Title";
-import {cards} from "../../database";
-import CardList from "../CardList";
+import CardList from "../CardList/CardList";
+import { Button, Form, Modal } from "react-bootstrap";
+import { MyForm } from "../MyForm/MyForm";
+import { ICard } from "../../types/types";
 
-export const Main: FC = () => {
-    return (
-        <div className="container m-auto pt-8">
-            <Title subtitle={"Посмотреть всё"}>Рекомендации для вас</Title>
+interface MainProps {
+  cards: ICard[];
+  createCard: (card: ICard) => void;
+}
 
-            <CardList cards={cards}/>
+export const Main: FC<MainProps> = ({ cards, createCard }) => {
+  return (
+    <>
+      <Title subtitle={"Посмотреть всё"}>Рекомендации для вас</Title>
+      <CardList cards={cards} />
+      <Title subtitle={"Перейти в каталог"}>Популярные категории</Title>
+      <Title subtitle={"Посмотреть всё"}>Акции</Title>
 
-            <Title subtitle={"Перейти в каталог"}>Популярные категории</Title>
-
-            <Title subtitle={"Посмотреть всё"}>Акции</Title>
-        </div>
-    );
+      <MyForm createCard={createCard} />
+    </>
+  );
 };

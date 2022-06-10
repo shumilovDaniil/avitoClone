@@ -34,7 +34,7 @@ export const MyForm: FC<AdvertFormProps> = ({ createCard }) => {
   return (
     <div>
       <Button variant="primary" onClick={handleShow}>
-        Launch demo modal
+        Создать объявление
       </Button>
 
       <Modal show={show} onHide={handleClose} dialogClassName="my-modal">
